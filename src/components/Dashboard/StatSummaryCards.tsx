@@ -12,7 +12,7 @@ const reasonsData: ReasonStat[] = [
   { percentage: 40, reason: 'The proposal is unclear' },
   { percentage: 20, reason: 'However venture pursuit' },
   { percentage: 10, reason: 'Other' },
-  { percentage: 30, reason: 'The proposal is unclear' }, // This appears duplicated in the design
+  { percentage: 30, reason: 'Lack of budget' },
 ];
 
 interface OtherStat {
@@ -70,7 +70,7 @@ const StatSummaryCards: React.FC = () => {
               </div>
               <p className="text-sm text-muted-foreground max-w-[120px]">{item.label}</p>
             </div>
-          ))}
+          ))}\
         </CardContent>
       </Card>
     </div>
