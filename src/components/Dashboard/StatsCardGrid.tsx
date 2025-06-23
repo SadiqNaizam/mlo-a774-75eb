@@ -13,11 +13,11 @@ interface FunnelStage {
 }
 
 const funnelData: FunnelStage[] = [
-  { name: 'Discovery', count: 200, value: 200, duration: 2, color: 'bg-red-400' },
-  { name: 'Qualified', count: 100, value: 100, duration: 2, color: 'bg-yellow-400' },
-  { name: 'In conversation', count: 50, value: 100, duration: 5, color: 'bg-indigo-900' },
-  { name: 'Negotiations', count: 20, value: 50, duration: 8, color: 'bg-green-400' },
-  { name: 'Closed won', count: 20, value: 50, duration: 10, color: 'bg-purple-600' },
+  { name: 'Discovery', count: 200, value: 200, duration: 2, color: 'bg-chart-1' },
+  { name: 'Qualified', count: 100, value: 100, duration: 2, color: 'bg-chart-2' },
+  { name: 'In conversation', count: 50, value: 100, duration: 5, color: 'bg-chart-3' },
+  { name: 'Negotiations', count: 20, value: 50, duration: 8, color: 'bg-chart-4' },
+  { name: 'Closed won', count: 20, value: 50, duration: 10, color: 'bg-chart-5' },
 ];
 
 const totalFunnelCount = funnelData.reduce((sum, item) => sum + item.count, 0);
@@ -31,10 +31,10 @@ interface SourceData {
 }
 
 const sourcesData: SourceData[] = [
-  { name: 'Clutch', value: 3000, deals: 15, percentage: 50, color: '#F87171' }, // red-400
-  { name: 'Behance', value: 1000, deals: 10, percentage: 40, color: '#FBBF24' }, // amber-400
-  { name: 'Instagram', value: 1000, deals: 5, percentage: 10, color: '#38BDF8' }, // sky-400
-  { name: 'Dribbble', value: 1000, deals: 2, percentage: 10, color: '#818CF8' }, // indigo-400
+  { name: 'Clutch', value: 3000, deals: 15, percentage: 50, color: 'hsl(var(--chart-1))' },
+  { name: 'Behance', value: 1000, deals: 10, percentage: 40, color: 'hsl(var(--chart-2))' },
+  { name: 'Instagram', value: 1000, deals: 5, percentage: 10, color: 'hsl(var(--primary))' },
+  { name: 'Dribbble', value: 1000, deals: 2, percentage: 10, color: 'hsl(var(--chart-5))' },
 ];
 
 const FunnelCard: React.FC = () => (
@@ -95,7 +95,7 @@ const SourcesCard: React.FC = () => (
             <Pie data={sourcesData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={2}>
               {sourcesData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} stroke={entry.color} />
-              ))}
+              ))}\
             </Pie>
           </PieChart>
         </ResponsiveContainer>
@@ -121,7 +121,7 @@ const SourcesCard: React.FC = () => (
               </TooltipProvider>
             </div>
           </div>
-        ))}
+        ))}\
       </div>
     </CardContent>
     <CardFooter className='justify-center'>
@@ -137,7 +137,7 @@ const SourcesCard: React.FC = () => (
 const StatsCardGrid: React.FC = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <FunnelCard />
+      <FunnerCard />
       <SourcesCard />
     </div>
   );
