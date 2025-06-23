@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Button } from '@/components/ui/button';
 import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 interface FunnelStage {
   name: 'Discovery' | 'Qualified' | 'In conversation' | 'Negotiations' | 'Closed won' as const;
@@ -44,7 +44,7 @@ const FunnelCard: React.FC = () => (
     </CardHeader>
     <CardContent>
       <div className="flex items-baseline gap-2 mb-4">
-        <p className="text-5xl font-bold">600</p>
+        <p className="text-5xl font-bold">{totalFunnelCount}</p>
         <p className="text-sm text-muted-foreground">active leads</p>
       </div>
       <div className="w-full rounded-full h-2 flex overflow-hidden mb-6">
@@ -125,11 +125,11 @@ const SourcesCard: React.FC = () => (
       </div>
     </CardContent>
     <CardFooter className='justify-center'>
-       <div className='bg-muted p-1 rounded-lg flex items-center gap-1'>
-          <Button variant='ghost' size='sm' className='text-muted-foreground'>Leads came</Button>
-          <Button variant='secondary' size='sm' className='shadow-sm'>Leads Converted</Button>
-          <Button variant='ghost' size='sm' className='text-muted-foreground'>Total deals size</Button>
-       </div>
+      <ToggleGroup type="single" defaultValue="converted" className='bg-muted p-1 rounded-lg flex items-center gap-1'>
+          <ToggleGroupItem value="came" aria-label="Toggle leads came" className="text-sm rounded-md h-9 px-3 text-muted-foreground data-[state=on]:bg-card data-[state=on]:text-foreground data-[state=on]:shadow-sm">Leads came</ToggleGroupItem>
+          <ToggleGroupItem value="converted" aria-label="Toggle leads converted" className="text-sm rounded-md h-9 px-3 text-muted-foreground data-[state=on]:bg-card data-[state=on]:text-foreground data-[state=on]:shadow-sm">Leads Converted</ToggleGroupItem>
+          <ToggleGroupItem value="size" aria-label="Toggle total deals size" className="text-sm rounded-md h-9 px-3 text-muted-foreground data-[state=on]:bg-card data-[state=on]:text-foreground data-[state=on]:shadow-sm">Total deals size</ToggleGroupItem>
+      </ToggleGroup>
     </CardFooter>
   </Card>
 );
