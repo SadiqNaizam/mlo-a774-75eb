@@ -32,6 +32,9 @@ const chartData: ChartData[] = [
   { month: 'August', closedWon: 105, closedLost: 82 },
 ];
 
+const totalClosedWon = chartData.reduce((acc, item) => acc + item.closedWon, 0);
+const totalClosedLost = chartData.reduce((acc, item) => acc + item.closedLost, 0);
+
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
@@ -53,11 +56,11 @@ const LargeChartCard: React.FC = () => {
           <CardTitle>Leads tracking</CardTitle>
           <div className="flex items-baseline gap-4 mt-2">
             <div className="flex items-baseline gap-2">
-              <p className="text-3xl font-bold">680</p>
+              <p className="text-3xl font-bold">{totalClosedWon}</p>
               <p className="text-sm text-muted-foreground">total closed</p>
             </div>
             <div className="flex items-baseline gap-2">
-              <p className="text-3xl font-bold">70</p>
+              <p className="text-3xl font-bold">{totalClosedLost}</p>
               <p className="text-sm text-muted-foreground">total lost</p>
             </div>
           </div>
