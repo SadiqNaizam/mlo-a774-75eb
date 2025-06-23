@@ -95,7 +95,7 @@ const SourcesCard: React.FC = () => (
             <Pie data={sourcesData} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={2}>
               {sourcesData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} stroke={entry.color} />
-              ))}\
+              ))}
             </Pie>
           </PieChart>
         </ResponsiveContainer>
@@ -121,7 +121,7 @@ const SourcesCard: React.FC = () => (
               </TooltipProvider>
             </div>
           </div>
-        ))}\
+        ))}
       </div>
     </CardContent>
     <CardFooter className='justify-center'>
@@ -137,7 +137,7 @@ const SourcesCard: React.FC = () => (
 const StatsCardGrid: React.FC = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <FunnerCard />
+      <FunnelCard />
       <SourcesCard />
     </div>
   );
