@@ -37,8 +37,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="p-2 bg-card border rounded-md shadow-lg">
         <p className="label font-bold">{`${label}`}</p>
-        <p className="intro text-[#0284c7]">{`Closed Won : ${payload[0].value}`}</p>
-        <p className="intro text-[#dc2626]">{`Closed Lost : ${payload[1].value}`}</p>
+        <p className="intro text-primary">{`Closed Won : ${payload[0].value}`}</p>
+        <p className="intro text-destructive">{`Closed Lost : ${payload[1].value}`}</p>
       </div>
     );
   }
@@ -78,30 +78,30 @@ const LargeChartCard: React.FC = () => {
           <AreaChart data={chartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
             <defs>
               <linearGradient id="colorWon" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.4}/>
-                <stop offset="95%" stopColor="#0ea5e9" stopOpacity={0}/>
+                <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.4}/>
+                <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0}/>
               </linearGradient>
               <linearGradient id="colorLost" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.4}/>
-                <stop offset="95%" stopColor="#f43f5e" stopOpacity={0}/>
+                <stop offset="5%" stopColor="hsl(var(--destructive))" stopOpacity={0.4}/>
+                <stop offset="95%" stopColor="hsl(var(--destructive))" stopOpacity={0}/>
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="hsl(var(--border))" />
             <XAxis dataKey="month" tickLine={false} axisLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
             <YAxis tickLine={false} axisLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'hsl(var(--foreground))', strokeWidth: 1, strokeDasharray: '3 3' }} />
-            <Area type="monotone" dataKey="closedWon" stroke="#0ea5e9" strokeWidth={2} fillOpacity={1} fill="url(#colorWon)" />
-            <Area type="monotone" dataKey="closedLost" stroke="#f43f5e" strokeWidth={2} fillOpacity={1} fill="url(#colorLost)" />
+            <Area type="monotone" dataKey="closedWon" stroke="hsl(var(--primary))" strokeWidth={2} fillOpacity={1} fill="url(#colorWon)" />
+            <Area type="monotone" dataKey="closedLost" stroke="hsl(var(--destructive))" strokeWidth={2} fillOpacity={1} fill="url(#colorLost)" />
           </AreaChart>
         </ResponsiveContainer>
       </CardContent>
       <CardFooter className="flex justify-center items-center gap-6 pt-6">
         <div className="flex items-center gap-2">
-          <div className="h-2.5 w-2.5 bg-[#0ea5e9] rounded-sm"></div>
+          <div className="h-2.5 w-2.5 bg-primary rounded-sm"></div>
           <span className="text-sm text-muted-foreground">Closed won</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="h-2.5 w-2.5 bg-[#f43f5e] rounded-sm"></div>
+          <div className="h-2.5 w-2.5 bg-destructive rounded-sm"></div>
           <span className="text-sm text-muted-foreground">Closed lost</span>
         </div>
       </CardFooter>
