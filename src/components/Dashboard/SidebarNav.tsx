@@ -36,9 +36,8 @@ const mainNavItems: NavItem[] = [
 ];
 
 const helpNavItems: NavItem[] = [
-  { id: 'help1', label: 'Help', icon: HelpCircle, href: '#' },
+  { id: 'help', label: 'Help', icon: HelpCircle, href: '#' },
   { id: 'settings', label: 'Settings', icon: Settings, href: '#' },
-  { id: 'help2', label: 'Help', icon: HelpCircle, href: '#' }, // The image shows two 'Help' items
 ];
 
 const SidebarNav: React.FC = () => {
